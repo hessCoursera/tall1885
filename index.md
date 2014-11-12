@@ -74,5 +74,6 @@ Created an app that:
   * reads user height
   * computes continuos PDF from the galton data
   * computes the probability of a man of 1885 being shorter
+  * code is available at: https://github.com/hessCoursera/tall1885_code.git
   * is available at: https://hesscoursera.shinyapps.io/project/
 

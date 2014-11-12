@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coursera Project on Developing Data Products</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Coursera Project on Developing Data Products">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Coursera Project on Developing Data Products</h1>
+    <h2>App   -    Would you be tall in 1885</h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Question: Would you be tall in 1885?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Creating an app that should:</p>
+
+<ol>
+<li><p>Read in user height</p></li>
+<li><p>Load the Galton dataset</p></li>
+<li><p>Compute the Percentage of men in 1885 that are shorter</p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Read in user height</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Input via a slider which let user choose his height</p>
+
+<pre><code class="r">sliderInput(&#39;myheight&#39;, &#39;What is your height (inches)&#39;
+            ,value = 72, min = 60, max = 85, step = 0.05,)
+</code></pre>
+
+<p>and display its location on the distribution:</p>
+
+<pre><code class="r">  hist(galton$child, xlab=&#39;height&#39;, col=&#39;lightblue&#39;,main=&#39;Probability&#39;, prob=TRUE)
+  curve(dnorm(x,mean=mean(galton$child),sd=sd(galton$child)),add=TRUE)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Compute the Probability:</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Get the mean and standard deviation of the galton data</p>
+
+<pre><code class="r">library(UsingR)
+data(galton)
+c(mean(galton$child),sd(galton$child))
+</code></pre>
+
+<pre><code>## [1] 68.088470  2.517941
+</code></pre>
+
+<p>Compute the probability of a man of 1885 who&#39;s shorter:
+Example for 70 inches</p>
+
+<pre><code class="r">height=70
+pnorm(height,mean=mean(galton$child),sd=sd(galton$child))
+</code></pre>
+
+<pre><code>## [1] 0.7761227
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Created an app that:</p>
+
+<ul>
+<li>reads user height</li>
+<li>computes continuos PDF from the galton data</li>
+<li>computes the probability of a man of 1885 being shorter</li>
+<li>is available at:</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Question: Would you be tall in 1885?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Read in user height'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Compute the Probability:'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Summary'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
